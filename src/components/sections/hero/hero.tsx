@@ -27,7 +27,11 @@ const AnimatedCounter = ({ value, suffix }: { value: number, suffix: string }) =
     }
   }, [inView, value]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return (
+    <span ref={ref} className="inline-block min-w-[3ch]">
+      {count}{suffix}
+    </span>
+  );
 };
 
 export function Hero({ className }: HeroProps) {
@@ -47,9 +51,9 @@ export function Hero({ className }: HeroProps) {
 
       <div className="pt-32 sm:pt-40 pb-[80px] sm:pb-[120px] px-6 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.5, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center lg:text-left"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] sm:text-xs font-mono text-primary mb-6 sm:mb-8 backdrop-blur-sm">

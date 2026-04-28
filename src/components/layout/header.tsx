@@ -149,11 +149,11 @@ export function Header({ className }: HeaderProps) {
 
           {/* Mobile Menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger render={
+            <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden" aria-label="Abrir menu de navegação">
                 <Menu className="w-6 h-6" />
               </Button>
-            } />
+            </SheetTrigger>
             <SheetContent side="right" className="w-[300px] bg-background/95 backdrop-blur-xl border-l-border/50 p-0">
               <SheetHeader className="text-left px-6 py-8 border-b border-border/50 mb-4">
                 <SheetTitle className="text-2xl font-display font-bold">

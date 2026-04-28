@@ -116,10 +116,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Preload critical assets if needed */}
       </head>
       <body className="min-h-screen bg-background text-foreground font-body flex flex-col relative">
-        {/* Global Noise Texture */}
-        <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        {/* Global Noise Texture - Optimized with local CSS pattern or lower opacity */}
+        <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02] mix-blend-overlay bg-noise" />
         
         {children}
 
