@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# project skills
+AGENTS.md
+brand-voice.md
+component-pattern.md
+project-structure.md
+replace_classes.js
