@@ -17,6 +17,7 @@ export function Services({ className }: ServicesProps) {
   return (
     <SectionWrapper 
       id="services" 
+      ariaLabelledBy="services-heading"
       className={cn("bg-card/30 border-y border-border/50", className)}
       withGrid
     >
@@ -30,7 +31,7 @@ export function Services({ className }: ServicesProps) {
         <p className="text-xs font-mono text-primary mb-4 uppercase tracking-[0.2em] font-bold">
           NOSSAS SOLUÇÕES
         </p>
-        <h2 className="text-3xl md:text-5xl font-display font-bold">
+        <h2 id="services-heading" className="text-3xl md:text-5xl font-display font-bold">
           Engenharia focada em <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">resultados.</span>
         </h2>
       </div>

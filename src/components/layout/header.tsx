@@ -113,7 +113,7 @@ export function Header({ className }: HeaderProps) {
   );
 
   return (
-    <nav className={cn("fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md", className)}>
+    <nav aria-label="Menu principal" className={cn("fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md", className)}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
         <Link 
           href="/" 
@@ -122,7 +122,7 @@ export function Header({ className }: HeaderProps) {
           <div className="relative w-12 h-12 sm:w-[70px] sm:h-[70px] flex-shrink-0">
             <Image 
               src="/images/logo-deploywise.png" 
-              alt="Logo" 
+              alt="Logo da DeployWise" 
               fill 
               sizes="(max-width: 640px) 48px, 70px"
               className="object-contain"
@@ -150,7 +150,7 @@ export function Header({ className }: HeaderProps) {
           {/* Mobile Menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger render={
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Abrir menu de navegação">
                 <Menu className="w-6 h-6" />
               </Button>
             } />

@@ -10,13 +10,14 @@ interface TestimonialsProps {
 
 export function Testimonials({ className }: TestimonialsProps) {
   return (
-    <section className={cn("py-[120px] px-6 max-w-[1200px] mx-auto", className)}>
+    <section id="testimonials" aria-labelledby="testimonials-heading" className={cn("py-[120px] px-6 max-w-[1200px] mx-auto", className)}>
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className="text-3xl md:text-5xl font-display font-bold mb-16 text-center"
+        id="testimonials-heading"
       >
         O que dizem nossos parceiros
       </motion.h2>

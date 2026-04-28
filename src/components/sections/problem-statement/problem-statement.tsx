@@ -31,6 +31,8 @@ export function ProblemStatement({ className }: ProblemStatementProps) {
 
   return (
     <SectionWrapper 
+      id="problem-statement"
+      ariaLabelledBy="problem-statement-heading"
       className={cn("text-center", className)}
       containerSize="md"
     >
@@ -39,6 +41,7 @@ export function ProblemStatement({ className }: ProblemStatementProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
+        id="problem-statement-heading"
         className="text-3xl md:text-5xl font-display font-bold mb-16 leading-tight"
       >
         O custo da dívida técnica está <br/>

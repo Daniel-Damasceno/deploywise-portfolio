@@ -1,5 +1,8 @@
 export const COMPANY_NAME = "DeployWise";
 export const COMPANY_EMAIL = "deploywise3@gmail.com";
+export const COMPANY_PHONE = "(92) 99420-9172";
+export const COMPANY_DESCRIPTION =
+  "Softhouse especializada em desenvolvimento web, sistemas sob medida, design UI/UX e social media. Atendemos empresas, startups e pequenos negócios.";
 
 export const NAVIGATION_LINKS = [
   { name: "Serviços", href: "/#services" },

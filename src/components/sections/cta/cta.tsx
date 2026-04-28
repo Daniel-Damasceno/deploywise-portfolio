@@ -6,7 +6,7 @@ import { Mail, Phone, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { COMPANY_EMAIL } from "@/lib/constants";
+import { COMPANY_EMAIL, COMPANY_PHONE } from "@/lib/constants";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -55,7 +55,7 @@ export function Cta({ className }: CtaProps) {
   };
 
   return (
-    <section id="contact" className={cn("py-[120px] px-6 bg-card border-y border-border", className)}>
+    <section id="contact" aria-labelledby="contact-heading" className={cn("py-[120px] px-6 bg-card border-y border-border", className)}>
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
         {/* Left Column */}
@@ -66,7 +66,7 @@ export function Cta({ className }: CtaProps) {
           transition={{ duration: 0.6 }}
           className="text-left"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 leading-tight">
+          <h2 id="contact-heading" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 leading-tight">
             Pronto para transformar sua presença digital?
           </h2>
           <p className="text-muted-foreground mb-12 text-sm md:text-base leading-relaxed max-w-md">
@@ -88,7 +88,7 @@ export function Cta({ className }: CtaProps) {
                 <Phone className="w-5 h-5 text-primary" />
               </div>
               <span className="font-mono text-sm text-foreground tracking-wide">
-                (92) 99420-9172
+                {COMPANY_PHONE}
               </span>
             </div>
           </div>
@@ -108,6 +108,7 @@ export function Cta({ className }: CtaProps) {
                   {...register("name")}
                   type="text" 
                   placeholder="Nome completo" 
+                  aria-label="Nome completo"
                   className={cn("h-12 bg-white/[0.03] border-white/10 text-foreground placeholder:text-muted-foreground/70 rounded-md px-4 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all", errors.name && "border-red-500 focus-visible:ring-red-500")} 
                 />
                 {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
@@ -118,6 +119,7 @@ export function Cta({ className }: CtaProps) {
                   {...register("email")}
                   type="email" 
                   placeholder="E-mail corporativo" 
+                  aria-label="E-mail corporativo"
                   className={cn("h-12 bg-white/[0.03] border-white/10 text-foreground placeholder:text-muted-foreground/70 rounded-md px-4 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all", errors.email && "border-red-500 focus-visible:ring-red-500")} 
                 />
                 {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
@@ -129,6 +131,7 @@ export function Cta({ className }: CtaProps) {
                 {...register("company")}
                 type="text" 
                 placeholder="Empresa" 
+                aria-label="Nome da empresa"
                 className={cn("h-12 bg-white/[0.03] border-white/10 text-foreground placeholder:text-muted-foreground/70 rounded-md px-4 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all", errors.company && "border-red-500 focus-visible:ring-red-500")} 
               />
               {errors.company && <p className="text-xs text-red-500">{errors.company.message}</p>}
@@ -138,6 +141,7 @@ export function Cta({ className }: CtaProps) {
               <Textarea 
                 {...register("project")}
                 placeholder="Fale sobre seu projeto" 
+                aria-label="Detalhes do projeto"
                 className={cn("min-h-[150px] bg-white/[0.03] border-white/10 text-foreground placeholder:text-muted-foreground/70 rounded-md p-4 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary resize-none transition-all", errors.project && "border-red-500 focus-visible:ring-red-500")} 
               />
               {errors.project && <p className="text-xs text-red-500">{errors.project.message}</p>}

@@ -32,7 +32,7 @@ const AnimatedCounter = ({ value, suffix }: { value: number, suffix: string }) =
 
 export function Hero({ className }: HeroProps) {
   return (
-    <section className={cn("relative w-full overflow-hidden", className)}>
+    <section aria-labelledby="hero-heading" className={cn("relative w-full overflow-hidden", className)}>
       <GridBackground />
       <RadialGlow 
         color="primary" 
@@ -57,7 +57,7 @@ export function Hero({ className }: HeroProps) {
             Softhouse Premium - desde 2025
           </div>
           
-          <h1 className="text-4xl xs:text-5xl lg:text-[64px] font-display font-bold leading-[1.1] tracking-tight mb-6">
+          <h1 id="hero-heading" className="text-4xl xs:text-5xl lg:text-[64px] font-display font-bold leading-[1.1] tracking-tight mb-6">
             Presença digital que <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">vende.</span><br />
             Sistemas que <span className="bg-gradient-to-r from-primary to-emerald-500 bg-clip-text text-transparent">escalam.</span>
           </h1>

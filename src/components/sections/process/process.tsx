@@ -14,6 +14,7 @@ export function Process({ className }: ProcessProps) {
   return (
     <SectionWrapper 
       id="process" 
+      ariaLabelledBy="process-heading"
       className={cn("bg-background", className)}
       withGrid
     >
@@ -27,7 +28,7 @@ export function Process({ className }: ProcessProps) {
         <p className="text-xs font-mono text-primary mb-4 uppercase tracking-[0.2em] font-bold">
           METODOLOGIA
         </p>
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold">
+        <h2 id="process-heading" className="text-2xl sm:text-3xl md:text-5xl font-display font-bold">
           Como <span className="bg-gradient-to-r from-primary to-emerald-500 bg-clip-text text-transparent">trabalhamos.</span>
         </h2>
       </div>
@@ -69,9 +70,9 @@ export function Process({ className }: ProcessProps) {
                 <div className="absolute -inset-1 bg-primary/20 blur-md rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
-              <h4 className="font-bold text-xl mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+              <h3 className="font-bold text-xl mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
                 {step.title}
-              </h4>
+              </h3>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed group-hover:text-foreground/80 transition-colors">
                 {step.description}
               </p>

@@ -14,6 +14,7 @@ export function Portfolio({ className }: PortfolioProps) {
   return (
     <SectionWrapper 
       id="portfolio" 
+      ariaLabelledBy="portfolio-heading"
       className={cn("bg-card/20 border-y border-border/50", className)}
       withGrid
     >
@@ -27,7 +28,7 @@ export function Portfolio({ className }: PortfolioProps) {
         <p className="text-xs font-mono text-primary mb-4 uppercase tracking-[0.2em] font-bold">
           CASES DE SUCESSO
         </p>
-        <h2 className="text-3xl md:text-5xl font-display font-bold">
+        <h2 id="portfolio-heading" className="text-3xl md:text-5xl font-display font-bold">
           Resultados que <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">falam.</span>
         </h2>
       </div>

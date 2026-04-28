@@ -10,7 +10,7 @@ export function Footer({ className }: FooterProps) {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className={cn("bg-background py-16 px-4 sm:px-6 border-t border-border/50", className)}>
+    <footer aria-label="Rodapé" className={cn("bg-background py-16 px-4 sm:px-6 border-t border-border/50", className)}>
       <div className="max-w-[1200px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-6">
           
@@ -39,6 +39,7 @@ export function Footer({ className }: FooterProps) {
                 href={link.href} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                aria-label={`${link.name} da DeployWise (abre em nova aba)`}
                 className="text-sm font-mono text-muted-foreground hover:text-primary transition-all hover:-translate-y-1"
               >
                 {link.name}

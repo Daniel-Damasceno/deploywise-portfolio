@@ -8,6 +8,7 @@ interface SectionWrapperProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  ariaLabelledBy?: string;
   withGrid?: boolean;
   containerSize?: "sm" | "md" | "lg" | "xl" | "full";
 }
@@ -16,6 +17,7 @@ export function SectionWrapper({
   children, 
   className, 
   id, 
+  ariaLabelledBy,
   withGrid = false,
   containerSize = "lg"
 }: SectionWrapperProps) {
@@ -30,6 +32,7 @@ export function SectionWrapper({
   return (
     <section 
       id={id} 
+      aria-labelledby={ariaLabelledBy}
       className={cn("relative py-20 sm:py-24 px-4 sm:px-6 overflow-hidden", className)}
     >
       {withGrid && <GridBackground className="opacity-[0.02] dark:opacity-[0.05]" />}

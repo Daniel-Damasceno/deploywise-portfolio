@@ -14,10 +14,10 @@ interface LegalSectionProps {
 
 export function LegalSection({ className, data }: LegalSectionProps) {
   return (
-    <section className={cn("relative w-full py-24 md:py-32", className)}>
+    <section aria-labelledby="legal-heading" className={cn("relative w-full py-24 md:py-32", className)}>
       <div className="max-w-[800px] mx-auto px-6">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          <h1 id="legal-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             {data.title}
           </h1>
           <p className="text-muted-foreground">

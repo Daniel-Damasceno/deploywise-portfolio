@@ -14,13 +14,14 @@ export function Faq({ className }: FaqProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section id="faq" className={cn("py-[120px] px-6 max-w-[800px] mx-auto border-t border-border", className)}>
+    <section id="faq" aria-labelledby="faq-heading" className={cn("py-[120px] px-6 max-w-[800px] mx-auto border-t border-border", className)}>
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className="text-3xl md:text-5xl font-display font-bold mb-12 text-center"
+        id="faq-heading"
       >
         Perguntas Frequentes
       </motion.h2>
@@ -50,6 +51,8 @@ export function Faq({ className }: FaqProps) {
           >
             <button 
               onClick={() => setOpenFaq(openFaq === i ? null : i)}
+              aria-expanded={openFaq === i}
+              aria-controls={`faq-answer-${faq.id}`}
               className="w-full flex items-center justify-between text-left font-bold p-6 hover:bg-muted transition-colors"
             >
               {faq.question}
@@ -68,7 +71,7 @@ export function Faq({ className }: FaqProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                  <div id={`faq-answer-${faq.id}`} role="region" aria-labelledby={`faq-question-${faq.id}`} className="px-6 pb-6 text-muted-foreground leading-relaxed">
                     {faq.answer}
                   </div>
                 </motion.div>
