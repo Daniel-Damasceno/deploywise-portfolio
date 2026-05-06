@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
 import { Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { HERO_STATS } from "@/lib/site-stats";
 import { Button } from "@/components/ui/button";
 import { GridBackground, RadialGlow } from "@/components/visuals/background-elements";
 
@@ -11,25 +12,49 @@ interface HeroProps {
   className?: string;
 }
 
-const AnimatedCounter = ({ value, suffix }: { value: number, suffix: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
+interface AnimatedCounterProps {
+  value: number | [number, number];
+  suffix?: string;
+  separator?: string;
+}
+
+const AnimatedCounter = ({ value, suffix = "", separator = "/" }: AnimatedCounterProps) => {
+  const isArray = Array.isArray(value);
+  const [display1, setDisplay1] = useState(0);
+  const [display2, setDisplay2] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
-    if (inView) {
-      const controls = animate(0, value, {
-        duration: 2.5,
-        ease: "easeOut",
-        onUpdate: (v) => setCount(Math.floor(v)),
-      });
-      return controls.stop;
+    if (!inView) return;
+
+    if (isArray) {
+      const [v1, v2] = value as [number, number];
+      const c1 = animate(0, v1, { duration: 2.5, ease: "easeOut", onUpdate: (v) => setDisplay1(Math.floor(v)) });
+      const c2 = animate(0, v2, { duration: 2.5, ease: "easeOut", onUpdate: (v) => setDisplay2(Math.floor(v)) });
+      return () => { c1.stop(); c2.stop(); };
     }
-  }, [inView, value]);
+
+    const c = animate(0, value as number, {
+      duration: 2.5,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay1(Math.floor(v)),
+    });
+    return c.stop;
+  }, [inView, value, isArray]);
+
+  const finalLabel = isArray
+    ? `${(value as [number, number])[0]} ${separator} ${(value as [number, number])[1]}${suffix}`
+    : `${value as number}${suffix}`;
+
+  const displayText = isArray
+    ? `${display1} ${separator} ${display2}${suffix}`
+    : `${display1}${suffix}`;
 
   return (
-    <span ref={ref} className="inline-block min-w-[3ch]">
-      {count}{suffix}
+    <span ref={ref} className="inline-block">
+      <span aria-hidden="true">{displayText}</span>
+      <span className="sr-only">{finalLabel}</span>
     </span>
   );
 };
@@ -85,18 +110,21 @@ export function Hero({ className }: HeroProps) {
           </div>
 
           <div className="flex justify-center lg:justify-start gap-8 sm:gap-12 border-t border-border/20 pt-10 mt-auto">
-            <div>
-              <div className="text-2xl sm:text-3xl font-display font-bold mb-1 bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
-                <AnimatedCounter value={150} suffix="+" />
+            {HERO_STATS.map((stat) => (
+              <div key={stat.id} className="min-w-0">
+                <div className="text-2xl sm:text-3xl font-display font-bold mb-1 bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} separator={stat.separator} />
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">
+                  {stat.label}
+                </div>
+                {stat.caption && (
+                  <div className="text-[10px] text-muted-foreground/50 mt-0.5 font-mono">
+                    {stat.caption}
+                  </div>
+                )}
               </div>
-              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Projetos</div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-display font-bold mb-1 bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
-                <AnimatedCounter value={98} suffix="%" />
-              </div>
-              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Retenção</div>
-            </div>
+            ))}
           </div>
         </motion.div>
 
