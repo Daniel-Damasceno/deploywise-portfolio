@@ -6,7 +6,7 @@ import { ProblemStatement } from "@/components/sections/problem-statement/proble
 import { Services } from "@/components/sections/services/services";
 import { Process } from "@/components/sections/process/process";
 import { Portfolio } from "@/components/sections/portfolio/portfolio";
-import { Testimonials } from "@/components/sections/testimonials/testimonials";
+
 import { Faq } from "@/components/sections/faq/faq";
 import { Cta } from "@/components/sections/cta/cta";
 
@@ -20,7 +20,7 @@ export default function Home() {
       <Services />
       <Process />
       <Portfolio />
-      <Testimonials />
+
       <Faq />
       <Cta />
       <Footer />

@@ -3,31 +3,26 @@ export interface CaseStudy {
   metric: string;
   title: string;
   description: string;
+  /** Path relative to /public — used as a browser-mockup preview in the portfolio card */
+  preview?: string;
+  href?: string;
+  comingSoon?: boolean;
 }
 
 export const cases: CaseStudy[] = [
   {
-    id: "fintech-alpha",
-    metric: "+340% Conversão",
-    title: "Plataforma Fintech Alpha",
-    description: "Reestruturação completa de interface e performance.",
+    id: "dr-jose-carlos",
+    metric: "40+ Anos de Experiência",
+    title: "Dr. José Carlos Paes Leme",
+    description: "Presença digital construída do zero para um cirurgião vascular de referência.",
+    preview: "/images/cases/dr-jose-carlos-preview.png",
+    href: "/portfolio/dr-jose-carlos",
   },
   {
-    id: "logistica-express",
-    metric: "-80% Latência",
-    title: "SaaS de Logística Express",
-    description: "Otimização de fluxos e integração de APIs em tempo real.",
-  },
-  {
-    id: "healthtech-app",
-    metric: "4.9 App Store Rating",
-    title: "App Mobile HealthTech",
-    description: "Aplicativo nativo focado em experiência de usuário impecável.",
-  },
-  {
-    id: "core-banking",
-    metric: "0 Downtime",
-    title: "Backend Core Banking",
-    description: "Migração de arquitetura legada para microserviços.",
+    id: "automacao-fiscal",
+    metric: "Em Validação",
+    title: "Projeto de Automação Fiscal",
+    description: "Sistema interno para automatizar rotinas fiscais e reduzir carga operacional.",
+    comingSoon: true,
   },
 ];
