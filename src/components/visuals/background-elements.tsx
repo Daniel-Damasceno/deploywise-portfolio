@@ -3,10 +3,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface BackgroundEffectsProps {
-  variant?: "grid" | "dots" | "glow";
-  className?: string;
-}
 
 export function GridBackground({ className }: { className?: string }) {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { AlertCircle, Zap, ShieldAlert, Workflow } from "lucide-react";
+import { Zap, ShieldAlert, Workflow } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/section-wrapper";
 import { AnimatedIcon } from "@/components/visuals/animated-icon";
@@ -89,4 +89,3 @@ export function ProblemStatement({ className }: ProblemStatementProps) {
     </SectionWrapper>
   );
 }
-

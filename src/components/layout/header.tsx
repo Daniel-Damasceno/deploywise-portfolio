@@ -13,6 +13,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -59,6 +60,40 @@ const AnimatedLogoText = () => {
   );
 };
 
+const NavLinks = ({ 
+  mobile = false, 
+  activeSection,
+  onClose
+}: { 
+  mobile?: boolean;
+  activeSection: string;
+  onClose?: () => void;
+}) => (
+  <>
+    {NAVIGATION_LINKS.map((link) => {
+      const hash = link.href.split("#")[1];
+      const isActive = activeSection === `#${hash}`;
+      return (
+        <Link 
+          key={link.name} 
+          href={link.href} 
+          onClick={() => mobile && onClose && onClose()}
+          className={cn(
+            "relative py-2 hover:text-foreground transition-colors",
+            isActive ? "text-foreground" : "text-muted-foreground",
+            mobile ? "text-lg font-semibold py-4 border-b border-border/50" : "text-sm font-medium"
+          )}
+        >
+          {link.name}
+          {!mobile && isActive && (
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary" />
+          )}
+        </Link>
+      );
+    })}
+  </>
+);
+
 export function Header({ className }: HeaderProps) {
   const [activeSection, setActiveSection] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -86,32 +121,6 @@ export function Header({ className }: HeaderProps) {
     return () => observer.disconnect();
   }, []);
 
-  const NavLinks = ({ mobile = false }: { mobile?: boolean }) => (
-    <>
-      {NAVIGATION_LINKS.map((link) => {
-        const hash = link.href.split("#")[1];
-        const isActive = activeSection === `#${hash}`;
-        return (
-          <Link 
-            key={link.name} 
-            href={link.href} 
-            onClick={() => mobile && setIsMobileMenuOpen(false)}
-            className={cn(
-              "relative py-2 hover:text-foreground transition-colors",
-              isActive ? "text-foreground" : "text-muted-foreground",
-              mobile ? "text-lg font-semibold py-4 border-b border-border/50" : "text-sm font-medium"
-            )}
-          >
-            {link.name}
-            {!mobile && isActive && (
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary" />
-            )}
-          </Link>
-        );
-      })}
-    </>
-  );
-
   return (
     <nav aria-label="Menu principal" className={cn("fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md", className)}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
@@ -136,7 +145,7 @@ export function Header({ className }: HeaderProps) {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLinks />
+          <NavLinks activeSection={activeSection} />
         </div>
 
         <div className="flex items-center gap-4">
@@ -159,9 +168,12 @@ export function Header({ className }: HeaderProps) {
                 <SheetTitle className="text-2xl font-display font-bold">
                   <AnimatedLogoText />
                 </SheetTitle>
+                <SheetDescription className="sr-only">
+                  Menu de navegação mobile da DeployWise. Acesse nossos serviços, processo, portfólio e FAQ.
+                </SheetDescription>
               </SheetHeader>
               <div className="flex flex-col px-6">
-                <NavLinks mobile />
+                <NavLinks mobile activeSection={activeSection} onClose={() => setIsMobileMenuOpen(false)} />
                 <Button 
                   asChild
                   className="mt-8 h-12 rounded-full bg-primary text-white hover:bg-primary/90 font-bold"
@@ -177,4 +189,3 @@ export function Header({ className }: HeaderProps) {
     </nav>
   );
 }
-

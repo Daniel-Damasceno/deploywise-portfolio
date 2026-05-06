@@ -45,7 +45,7 @@ export function Testimonials({ className }: TestimonialsProps) {
             }}
             className="border border-border p-8 rounded-sm bg-card hover:border-primary/30 transition-colors flex flex-col"
           >
-            <p className="italic text-foreground mb-8 leading-relaxed">"{testimonial.quote}"</p>
+            <p className="italic text-foreground mb-8 leading-relaxed">&quot;{testimonial.quote}&quot;</p>
             <div className="mt-auto">
               <p className="font-bold font-display text-lg">{testimonial.author}</p>
               <p className="text-sm text-muted-foreground font-mono mt-1">{testimonial.role}</p>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
-import { ChevronRight, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { GridBackground, RadialGlow } from "@/components/visuals/background-elements";
@@ -127,19 +127,19 @@ export function Hero({ className }: HeroProps) {
               </div>
               <div className="flex gap-4">
                 <span className="text-muted-foreground/40 select-none">02</span>
-                <span>&nbsp;&nbsp;name: <span className="text-emerald-400">"ScaleUp"</span>,</span>
+                <span>&nbsp;&nbsp;name: <span className="text-emerald-400">&quot;ScaleUp&quot;</span>,</span>
               </div>
               <div className="flex gap-4">
                 <span className="text-muted-foreground/40 select-none">03</span>
-                <span>&nbsp;&nbsp;perf: <span className="text-emerald-400">"99/100"</span>,</span>
+                <span>&nbsp;&nbsp;perf: <span className="text-emerald-400">&quot;99/100&quot;</span>,</span>
               </div>
               <div className="flex gap-4">
                 <span className="text-muted-foreground/40 select-none">04</span>
-                <span>&nbsp;&nbsp;uptime: <span className="text-emerald-400">"99.9%"</span>,</span>
+                <span>&nbsp;&nbsp;uptime: <span className="text-emerald-400">&quot;99.9%&quot;</span>,</span>
               </div>
               <div className="flex gap-4">
                 <span className="text-muted-foreground/40 select-none">05</span>
-                <span>&nbsp;&nbsp;deploy: () <span className="text-purple-400">=&gt;</span> <span className="text-emerald-400">"Ok"</span></span>
+                <span>&nbsp;&nbsp;deploy: () <span className="text-purple-400">=&gt;</span> <span className="text-emerald-400">&quot;Ok&quot;</span></span>
               </div>
               <div className="flex gap-4">
                 <span className="text-muted-foreground/40 select-none">06</span>
@@ -147,7 +147,7 @@ export function Hero({ className }: HeroProps) {
               </div>
               <div className="mt-4 flex gap-4">
                 <span className="text-muted-foreground/40 select-none">07</span>
-                <span className="text-muted-foreground italic text-[10px] sm:text-xs">// Initiating protocols...</span>
+                <span className="text-muted-foreground italic text-[10px] sm:text-xs">{`// Initiating protocols...`}</span>
               </div>
               <div className="flex gap-4">
                 <span className="text-muted-foreground/40 select-none">08</span>
@@ -181,5 +181,3 @@ export function Hero({ className }: HeroProps) {
     </section>
   );
 }
-
-
