@@ -83,7 +83,7 @@ export function Hero({ className }: HeroProps) {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] sm:text-xs font-mono text-primary mb-6 sm:mb-8 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-            Softhouse Premium - desde 2025
+            Estúdio de engenharia digital. Desde 2025.
           </div>
           
           <h1 id="hero-heading" className="text-4xl xs:text-5xl lg:text-[64px] font-display font-bold leading-[1.1] tracking-tight mb-6">

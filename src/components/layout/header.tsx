@@ -148,14 +148,7 @@ export function Header({ className }: HeaderProps) {
           <NavLinks activeSection={activeSection} />
         </div>
 
-        <div className="flex items-center gap-4">
-          <Button 
-            asChild
-            className="hidden sm:flex h-10 px-6 rounded-full bg-primary text-white hover:bg-primary/90 font-medium"
-          >
-            <Link href="/#contact">Trabalhe conosco</Link>
-          </Button>
-
+        <div className="flex items-center">
           {/* Mobile Menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
